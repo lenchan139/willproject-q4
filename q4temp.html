@@ -1,0 +1,24 @@
+
+<br/>
+  <p> Your ip is: {{ip}} (from: {{ipname}})</p>
+  <h3>Topic:</h3>
+<form>#{{topic}}
+  <input type="text" name="topic" /><input type="submit" value="=>" />
+</form>
+{% if topic != "" %}
+  {%if user %}
+
+<form method="POST"><b>New Comment: </b><br/>
+  <input type="hidden" name="topic" value='{{topic}}' />
+  <textarea name="comment" row="5" cols="40"></textarea><br/>
+  <input type="submit" value="Leave Comment" />
+</form>
+  {%endif%}
+  {% for comment in comments %}
+    <p>
+      {{comment.umail}} posted in {{comment.date}}: <br/>
+      {{comment.comment}}
+    </p>
+    {% endfor %}
+{%endif%}
+<br/>
