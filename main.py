@@ -71,6 +71,8 @@ class MainHandler(BaseHandler):
         response = urllib2.urlopen('http://www.geoplugin.net/json.gp?ip=' + ip)
         data = json.load(response)
         ip_name = data['geoplugin_countryName']
+        lat = data['geoplugin_latitude']
+        lng = data['geoplugin_longitude']
         if user:
             name = user.nickname()
             logout_url = users.create_logout_url('/')
@@ -92,7 +94,9 @@ class MainHandler(BaseHandler):
             'comments': comments,
             'ip': ip,
             'ipname': ip_name,
-            'user': user
+            'user': user,
+            'lat': lat,
+            'lng': lng
 
         }
         template = JINJA_ENVIRONMENT.get_template('q4temp.html')

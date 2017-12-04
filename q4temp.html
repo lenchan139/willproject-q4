@@ -1,6 +1,36 @@
+<script>
+  function initMap() {
+    var uluru = {lat:{{lat}}, lng: {{lng}}};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 15,
+      center: uluru
+    });
+    var marker = new google.maps.Marker({
+      position: uluru,
+      map: map
+    });
+  }
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMtL3cpOgFL1qnFwpan_o5glBimZeFHtQ&callback=initMap">
+</script>
+<style>
+   #map {
+     width: 250px;
+     height: 250px;
+     background-color: grey;
 
+   }
+
+
+ </style>
+
+
+
+ <!-- body -->
 <br/>
   <p> Your ip is: {{ip}} (from: {{ipname}})</p>
+    <div id="map"></div>
   <h3>Topic:</h3>
 <form>#{{topic}}
   <input type="text" name="topic" /><input type="submit" value="=>" />
